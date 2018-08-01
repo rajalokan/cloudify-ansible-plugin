@@ -96,25 +96,32 @@ def write_configuration_file(config):
 
     return file_path
 
-
-def run_command(command):
-
+def myexecute():
     try:
         run = Popen(command, stdout=PIPE)
-        for line in iter(run.stdout.readline, ''):
-            ctx.logger.info(line[:-1])
+        for line in iter(run.stdout.readline, ""):
+            yield line
+        run.stdout.close()
+        # eturn_code = popen.wait()
+        # if return_code:
+        #     raise subprocess.CalledProcessError(return_code, cmd)
     except Exception as e:
         raise exceptions.NonRecoverableError(
             'Unable to run command. Error {}'.format(str(e)))
 
-    try:
-        output = run.communicate()
-    except Exception as e:
-        raise exceptions.NonRecoverableError(
-            'Unable to run command. Error {}'.format(str(e)))
 
-    if run.returncode != 0:
-        raise exceptions.NonRecoverableError(
-            'Non-zero returncode. Output {}.'.format(output))
+def run_command(command):
+    for path in myexecute(command):
+        ctx.logger.info(path)
 
-    return output
+    # try:
+    #     output = run.communicate()
+    # except Exception as e:
+    #     raise exceptions.NonRecoverableError(
+    #         'Unable to run command. Error {}'.format(str(e)))
+    #
+    # if run.returncode != 0:
+    #     raise exceptions.NonRecoverableError(
+    #         'Non-zero returncode. Output {}.'.format(output))
+
+    # return output
