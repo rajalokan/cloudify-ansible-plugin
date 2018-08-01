@@ -54,15 +54,16 @@ def ansible_playbook(playbooks, inventory=list(), **kwargs):
 
     inventory_path = utils.get_inventory_path(inventory)
     ctx.logger.info('Inventory path: {0}.'.format(inventory_path))
+    ctx.logger.info('Finished running the Ansible Playbook.')
 
-    for playbook in playbooks:
-        playbook_path = utils.get_playbook_path(playbook)
-        ctx.logger.info('Playbook path: {0}.'.format(playbook_path))
-        user = utils.get_agent_user()
-        command = ['ansible-playbook', '--sudo', '-u', user,
-                   '-i', inventory_path, playbook_path,
-                   '--timeout=60', '-vvvv']
-        ctx.logger.info('Running command: {0}.'.format(command))
-        output = utils.run_command(command)
-        ctx.logger.info('Command Output: {0}.'.format(output))
-        ctx.logger.info('Finished running the Ansible Playbook.')
+    # for playbook in playbooks:
+    #     playbook_path = utils.get_playbook_path(playbook)
+    #     ctx.logger.info('Playbook path: {0}.'.format(playbook_path))
+    #     user = utils.get_agent_user()
+    #     command = ['ansible-playbook', '--sudo', '-u', user,
+    #                '-i', inventory_path, playbook_path,
+    #                '--timeout=60', '-vvvv']
+    #     ctx.logger.info('Running command: {0}.'.format(command))
+    #     output = utils.run_command(command)
+    #     ctx.logger.info('Command Output: {0}.'.format(output))
+    #     ctx.logger.info('Finished running the Ansible Playbook.')
