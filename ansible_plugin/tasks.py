@@ -63,7 +63,7 @@ def ansible_playbook(playbooks, inventory=list(), **kwargs):
         user = utils.get_agent_user()
         command = ['ansible-playbook',
                    '-i', 'localhost,', '-c', 'local', playbook_path,
-                   '--timeout=60', '-vvvv']
+                   '--timeout=60']
         ctx.logger.info('Running command: {0}.'.format(command))
         output = utils.run_command(command)
         ctx.logger.info('Command Output: {0}.'.format(output))
