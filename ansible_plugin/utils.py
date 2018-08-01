@@ -98,9 +98,9 @@ def write_configuration_file(config):
 
 def myexecute(command):
     try:
-        run = Popen(command, stdout=PIPE)
+        run = Popen(command, stdout=PIPE, shell=True)
         for line in iter(run.stdout.readline, ""):
-            yield line
+            yield line[:-1]
         run.stdout.close()
         # eturn_code = popen.wait()
         # if return_code:
