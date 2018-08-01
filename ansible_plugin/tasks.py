@@ -66,5 +66,5 @@ def ansible_playbook(playbooks, inventory=list(), **kwargs):
                    '--timeout=60']
         ctx.logger.info('Running command: {0}.'.format(command))
         output = utils.run_command(command)
-        ctx.logger.info('Command Output: {0}.'.format(output))
+        # ctx.logger.info('Command Output: {0}.'.format(output))
         ctx.logger.info('Finished running the Ansible Playbook.')

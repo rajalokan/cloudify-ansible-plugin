@@ -96,7 +96,7 @@ def write_configuration_file(config):
 
     return file_path
 
-def myexecute():
+def myexecute(command):
     try:
         run = Popen(command, stdout=PIPE)
         for line in iter(run.stdout.readline, ""):
@@ -125,3 +125,4 @@ def run_command(command):
     #         'Non-zero returncode. Output {}.'.format(output))
 
     # return output
+    return None
