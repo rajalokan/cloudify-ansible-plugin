@@ -180,7 +180,7 @@ def run_ansible_command(command):
             dict(action=dict(module='debug', args=dict(msg='{{shell_out.stdout}}'))),
             dict(action=dict(module='debug', args=dict(msg='{{shell_out.stdout}}'))),
             dict(action=dict(module='debug', args=dict(msg='{{shell_out.stdout}}'))),
-            dict(action=dict(module='debug', args=dict(minutes=1))),
+            dict(action=dict(module='pause', args=dict(minutes=1))),
             dict(action=dict(module='debug', args=dict(msg='{{shell_out.stdout}}'))),
             dict(action=dict(module='debug', args=dict(msg='{{shell_out.stdout}}'))),
             dict(action=dict(module='debug', args=dict(msg='{{shell_out.stdout}}'))),
