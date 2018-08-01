@@ -101,6 +101,8 @@ def run_command(command):
 
     try:
         run = Popen(command, stdout=PIPE)
+        for line in iter(run.stdout.readline, ''):
+            ctx.logger.info(line)
     except Exception as e:
         raise exceptions.NonRecoverableError(
             'Unable to run command. Error {}'.format(str(e)))
