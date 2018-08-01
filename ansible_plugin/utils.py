@@ -24,6 +24,18 @@ from subprocess import Popen, PIPE
 from cloudify import ctx
 from cloudify import exceptions
 
+import json
+import shutil
+from collections import namedtuple
+from ansible.parsing.dataloader import DataLoader
+from ansible.plugins.callback import CallbackBase
+from ansible.inventory.manager import InventoryManager
+from ansible.vars.manager import VariableManager
+from ansible.playbook.play import Play
+import ansible.constants as C
+from ansible.executor.task_queue_manager import TaskQueueManager
+
+
 CLOUDIFY_MANAGER_PRIVATE_KEY_PATH = 'CLOUDIFY_MANAGER_PRIVATE_KEY_PATH'
 
 
